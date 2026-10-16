@@ -1,0 +1,193 @@
+---
+import "../styles/global.css";
+const { title, description, active, noindex, ogImage: ogImageProp } = Astro.props;
+const buildDate = new Date().toLocaleDateString("en-AU", { month: "long", year: "numeric" });
+// Strip the .html the file build format adds to the path, so the canonical
+// matches the clean, extension-less URL Cloudflare serves and the sitemap lists
+// (e.g. /app, not /app.html).
+const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ""), Astro.site).href;
+const ogImage = new URL(ogImageProp || "/og-image.png", Astro.site).href;
+// Canonical host, taken from astro.config `site`, so the brand/schema URLs below can
+// NEVER drift from the <link rel="canonical"> and og:url host again. On 10 Sep 2026
+// Search Console reported "Duplicate, Google chose different canonical than user":
+// these schema blocks hardcoded the www host while the canonical used the non-www
+// `site` value, and both apex + www served the page with no redirect. Deriving from
+// one source removes the internal contradiction; a Cloudflare www→apex 301 removes
+// the duplicate address.
+const siteBase = Astro.site.href.replace(/\/$/, "");
+const org = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Sevia",
+  url: siteBase,
+  logo: new URL("/apple-touch-icon.png", Astro.site).href,
+  description: "Software that catches your rooftop solar before it's exported — automating your home's biggest loads to run on your own sunshine.",
+  parentOrganization: { "@type": "Organization", name: "Sevia Energy", url: "https://seviaenergy.com" },
+  sameAs: ["https://seviaenergy.com"],
+};
+const website = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Sevia",
+  url: siteBase,
+};
+// Author identity. Added 2026-08-16.
+//
+// Until now the site emitted Organization and WebSite but no person, so nothing told
+// Google — or an AI engine deciding whether to cite us — who wrote any of this. For a
+// publication whose whole position is trust, that was the wrong thing to leave out.
+//
+// ⚠️ Every claim here must match /about exactly, and must stay true:
+//    · "since 1998" not a year count — never goes stale
+//    · knowsAbout describes subject expertise, NOT job titles he hasn't held
+//    · No client names (Jason's instruction, 2026-08-16)
+// Source: Jason's CV, read 2026-08-16.
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Jason Watson",
+  url: `${siteBase}/about`,
+  jobTitle: "Environmental Scientist",
+  image: new URL("/jason-watson-320.png", Astro.site).href,
+  description:
+    "Environmental scientist practising since 1998 and an Exemplar Global Certified Lead Environmental Auditor, writing about Australian home energy from measured data.",
+  email: "mailto:jason.watson@seviaenergy.com",
+  worksFor: {
+    "@type": "Organization",
+    name: "Sevia Energy",
+    url: "https://seviaenergy.com",
+    description:
+      "An independent Australian software company building science-led consumer apps. Sevia is its first product.",
+  },
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "Macquarie University" },
+    { "@type": "CollegeOrUniversity", name: "University of Canberra" },
+  ],
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "certification",
+      name: "Exemplar Global Certified Lead Environmental Auditor (ISO 14001)",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "degree",
+      name: "Master of Environmental Science",
+    },
+  ],
+  // No memberOf — Jason confirmed 2026-08-16 he is no longer an EIANZ member.
+  // Do not reinstate from the CV; the CV predates that.
+  knowsAbout: [
+    "Rooftop solar self-consumption",
+    "Home energy load shifting",
+    "Electric hot water systems",
+    "Time-of-use electricity tariffs",
+    "Home battery storage",
+    "Environmental auditing",
+  ],
+  homeLocation: { "@type": "Place", name: "Canberra, Australian Capital Territory" },
+};
+---
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex, follow" />}
+<link rel="canonical" href={canonical} />
+<meta name="theme-color" content="#0a0c0f" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Sevia" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_AU" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<script type="application/ld+json" set:html={JSON.stringify(org)} />
+<script type="application/ld+json" set:html={JSON.stringify(website)} />
+<script type="application/ld+json" set:html={JSON.stringify(person)} />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style is:global>
+  /* ── Mobile navigation ─────────────────────────────────────────────
+     global.css hides every nav link below 820px:
+         @media(max-width:820px){ .nav-links a:not(.btn){display:none} }
+     which left phones with NO navigation at all — just the logo and the
+     beta button. Someone landing on an article could not reach the
+     calculator, which is the top of the funnel.
+
+     This wraps the links onto a second row instead of hiding them.
+     All four stay visible, the current section keeps its amber underline,
+     and no JavaScript is involved. Desktop is untouched — every rule
+     below is inside the same 820px breakpoint.
+
+     Selectors are prefixed with `nav` purely to out-specify global.css.
+     Added 2026-08-15.
+  ───────────────────────────────────────────────────────────────────── */
+  @media (max-width: 820px) {
+    nav .nav-in       { flex-wrap: wrap; position: relative; padding: 12px 18px 0; }
+    nav .nav-links    { order: 3; width: 100%; justify-content: center; gap: 16px;
+                        margin-top: 11px; padding: 10px 0 11px;
+                        border-top: 1px solid var(--line); }
+    nav .nav-links a:not(.btn) { display: block; font-size: 13.5px; }
+    nav .nav-links .btn        { position: absolute; top: 12px; right: 18px; }
+    nav .brand img    { width: 36px; height: 36px; }
+    nav .brand span   { font-size: 17px; }
+
+    /* "Home" is dropped on phones — the logo already goes home and everyone knows it.
+       That frees the slot for "About", which now carries a named author, credentials
+       and a face, and is doing real trust work. Desktop keeps both; there's room.
+       Decided with Jason 2026-08-16. */
+    nav .nav-links a.nav-home  { display: none; }
+  }
+</style>
+</head>
+<body>
+  <nav>
+    <div class="nav-in">
+      <a class="brand" href="/"><img src="/pm-logo.png" alt="Sevia" width="43" height="43" /><span>Sevia</span></a>
+      <div class="nav-links">
+        <a href="/" class={"nav-home " + (active === "home" ? "active" : "")}>Home</a>
+        <a href="/calculator" class={active === "calc" ? "active" : ""}>Calculator</a>
+        <a href="/behind-the-meter" class={active === "btm" ? "active" : ""}>Behind the Meter</a>
+        <a href="/app" class={active === "app" ? "active" : ""}>The app</a>
+        <a href="/about" class={active === "about" ? "active" : ""}>About</a>
+        <a class="btn btn-amber" href="/app#beta">Join the beta →</a>
+      </div>
+    </div>
+  </nav>
+  <slot />
+  <footer>
+    <div class="wrap foot-in">
+      <a class="brand" href="/"><img src="/pm-logo.png" alt="Sevia" width="24" height="24" /><span>Sevia</span></a>
+      <div class="foot-nav">
+        <a href="/calculator">Calculator</a>
+        <a href="/behind-the-meter">Behind the Meter</a>
+        <a href="/app">The app</a>
+        <a href="/about">About</a>
+        <a href="/app#beta">Beta</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+      <div class="foot-right">
+        <a href="mailto:jason.watson@seviaenergy.com">jason.watson@seviaenergy.com</a><br />
+        Sevia · by Sevia Energy · Updated {buildDate}
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

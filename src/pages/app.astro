@@ -1,0 +1,7 @@
+---
+import Layout from "../layouts/Layout.astro";
+import body from "../content/app-body.html?raw";
+---
+<Layout title="The Sevia app — the missing brain for your home's energy" description="The Sevia app runs your hot water, car and aircon on your own solar instead of the grid, explains why in plain English, and honestly proves what it saved." active="app">
+  <Fragment set:html={body} />
+</Layout>
