@@ -198,7 +198,7 @@ draw();  // starts at a neutral 6.6 kW (the common Australian size) — a starti
 // Newsletter opt-in destination. MUST be the custom domain, not the .ghost.io host —
 // /members/api/send-magic-link/ 301s on the-molonglo.ghost.io and a redirect drops the
 // POST body, so signups would fail silently. Verified 2026-08-14.
-var GHOST_URL = 'https://news.seviaenergy.com';
+var GHOST_URL = '';  /* newsletter disabled — no list */
 
 function reportData(){
   var sun=sunOf(st.pc)||sunOf('2600');
@@ -326,7 +326,7 @@ function generatePDF(d, logo){
   doc.setFillColor(240,249,245); doc.roundedRect(M, y, CW, gH, 8, 8, 'F');
   doc.setFillColor(29,110,80); doc.rect(M, y, 3, gH, 'F');
   doc.setFont('helvetica','bold'); doc.setFontSize(9.5); doc.setTextColor(29,110,80);
-  doc.text('USING YOUR SURPLUS — THE POWERMIND BENEFIT', M+16, y+16);
+  doc.text('USING YOUR SURPLUS — THE SEVIA BENEFIT', M+16, y+16);
   doc.setFont('helvetica','normal'); doc.setFontSize(9.5); doc.setTextColor(38,48,43);
   doc.text(gtxt, M+16, y+29);
   y += gH + 16;
