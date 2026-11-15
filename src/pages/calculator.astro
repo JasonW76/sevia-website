@@ -1,5 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import CommercialLayout from "../layouts/CommercialLayout.astro";
+import "../styles/calc-content.css";
 import body from "../content/calculator-body.html?raw";
 import js from "../content/calculator.js?raw";
 import pc from "../data/pc_data.json";
@@ -50,14 +51,13 @@ const app = {
   },
 };
 ---
-<Layout
+<CommercialLayout
   title="What size solar system do I need? Free solar savings calculator | Sevia"
   description="What size solar system your home needs, in kW and panels — and what you'd actually save. A free Australian solar savings calculator showing how much of your solar you'd keep."
   ogImage="/og-calculator.png"
-  active="calc"
 >
   <Fragment set:html={body} />
   <script type="application/ld+json" set:html={JSON.stringify(app)} />
   <script is:inline set:html={data} />
   <script is:inline set:html={js} />
-</Layout>
+</CommercialLayout>

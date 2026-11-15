@@ -1,5 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import CommercialLayout from "../layouts/CommercialLayout.astro";
+import "../styles/legacy-tokens.css";
 
 // Privacy page. Written to be accurate to what the site actually does, verified
 // 2026-08-15: no cookies, no localStorage, Cloudflare Web Analytics (cookieless)
@@ -14,10 +15,9 @@ import Layout from "../layouts/Layout.astro";
 
 const updated = "15 August 2026";
 ---
-<Layout
-  title="Privacy — Sevia"
-  description="What Sevia collects, what it doesn't, and what happens to your email address. Plain English, no cookies, no tracking pixels."
-  active="">
+<CommercialLayout
+  title="Privacy — Sevia Energy"
+  description="What Sevia collects, what it doesn't, and what happens to your email address. Plain English, no cookies, no tracking pixels.">
   <div class="wrap priv">
 
     <h1>Privacy</h1>
@@ -25,14 +25,13 @@ const updated = "15 August 2026";
 
     <div class="lede">
       <p>The short version: <strong>this site sets no cookies, runs no advertising trackers,
-         and the calculator never sends your answers anywhere.</strong> If you give us your
-         email address, we use it to send you the newsletter and nothing else.</p>
+         and the calculator never sends your answers anywhere.</strong> If you email us, we
+         use your address only to reply — nothing else.</p>
     </div>
 
     <h2>Who we are</h2>
     <p>Sevia is a product of <strong>Capital Environmental Consulting Pty Ltd</strong>,
-       trading as <strong>Sevia Energy</strong> — an Australian company based in Canberra.
-       <em>Behind the Meter</em> is our newsletter.</p>
+       trading as <strong>Sevia Energy</strong> — an Australian company based in Canberra.</p>
     <p>It's run by Jason, and you can reach a real person at
        <a href="mailto:hello@seviaenergy.com">hello@seviaenergy.com</a> or
        <a href="mailto:jason.watson@seviaenergy.com">jason.watson@seviaenergy.com</a>.</p>
@@ -44,21 +43,11 @@ const updated = "15 August 2026";
     <p>There is no account, no sign-in, and no "enter your details to see your results".
        You can use the whole tool, download the PDF report, and leave without telling us
        who you are.</p>
-    <p class="note">The one exception is the optional tickbox under the report offering the
-       newsletter. If you tick it and enter an email address, that address goes to our
-       newsletter system — see below. Nothing else from the calculator goes with it.</p>
 
-    <h2>If you subscribe to Behind the Meter</h2>
-    <p>We collect your <strong>email address</strong>. That's it. We don't ask for your name,
-       and we don't require one.</p>
-    <p>We use it to send you the newsletter. We also record the ordinary things an
-       email system records — whether a message was delivered, opened, or clicked — so we can
-       tell whether the newsletter is any good and whether our emails are arriving.</p>
-    <p><strong>We will never sell your email address, rent it, or pass it to a third party
-       for their own marketing.</strong> No exceptions, no "trusted partners".</p>
-    <p>Every email has an unsubscribe link and it works immediately. You can also email
-       <a href="mailto:jason.watson@seviaenergy.com">jason.watson@seviaenergy.com</a> and ask to be removed, and we'll
-       do it and confirm.</p>
+    <h2>If you email us</h2>
+    <p>If you write to us, we keep your email and message so we can reply and follow up.
+       That's it — we don't add you to any list, and <strong>we will never sell your email
+       address, rent it, or pass it to a third party for their own marketing.</strong></p>
 
     <h2>Analytics — and the cookies we don't set</h2>
     <p>We use <strong>Cloudflare Web Analytics</strong> to see how many people visit and which
@@ -72,7 +61,6 @@ const updated = "15 August 2026";
 
     <h2>Who else touches your data</h2>
     <ul>
-      <li><strong>Ghost</strong> — runs our newsletter and holds the subscriber list.</li>
       <li><strong>Cloudflare</strong> — hosts this website and provides the analytics above.</li>
       <li><strong>Microsoft</strong> — our own email inbox, if you write to us.</li>
     </ul>
@@ -83,17 +71,13 @@ const updated = "15 August 2026";
     <p>Under the Australian Privacy Principles you can ask us what we hold about you, ask us
        to correct it, or ask us to delete it. Email
        <a href="mailto:jason.watson@seviaenergy.com">jason.watson@seviaenergy.com</a> and we'll respond.</p>
-    <p>For a subscriber, the honest answer to "what do you hold about me" is usually: one
-       email address, the date you subscribed, and whether you've opened recent emails.</p>
 
     <h2>Children</h2>
     <p>This site isn't aimed at children and we don't knowingly collect information from
        anyone under 18.</p>
 
     <h2>If this changes</h2>
-    <p>If we start collecting something new, we'll change this page and date it. If the change
-       is significant and you're a subscriber, we'll tell you in the newsletter rather than
-       quietly updating a page nobody reads.</p>
+    <p>If we start collecting something new, we'll change this page and date it.</p>
 
     <h2>Complaints</h2>
     <p>If you think we've mishandled your information, email
@@ -102,7 +86,7 @@ const updated = "15 August 2026";
        Commissioner at <a href="https://www.oaic.gov.au" rel="noopener">oaic.gov.au</a>.</p>
 
   </div>
-</Layout>
+</CommercialLayout>
 
 <style is:global>
   .priv{max-width:720px;padding-top:56px;padding-bottom:80px}

@@ -1,8 +1,8 @@
 ---
 import "../styles/commercial.css";
-const { title, description, active } = Astro.props;
+const { title, description, active, ogImage: ogImageProp } = Astro.props;
 const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ""), Astro.site).href;
-const ogImage = new URL("/og-image.png", Astro.site).href;
+const ogImage = new URL(ogImageProp || "/og-image.png", Astro.site).href;
 const links = [
   { href: "/technology", label: "The technology", key: "technology" },
   { href: "/company", label: "Company", key: "company" },
