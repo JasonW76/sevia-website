@@ -1,0 +1,164 @@
+<style>
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+  .capcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px}
+  .capcard .ci{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:rgba(74,206,169,.12);color:var(--teal);margin-bottom:16px}
+  .capcard h3{font-size:17px;font-weight:700;margin-bottom:9px}
+  .capcard p{font-size:14px;color:var(--sub);line-height:1.5}
+  @media(max-width:860px){ .caps{grid-template-columns:1fr} }
+  .homehero{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+  .homehero-phone img{width:100%;max-width:330px;border-radius:26px;border:1px solid var(--line);display:block;margin:0 auto;box-shadow:0 34px 80px -44px rgba(0,0,0,.85)}
+  @media(max-width:820px){ .homehero{grid-template-columns:1fr} .homehero-phone{order:-1;margin-bottom:8px} }
+  .twonum{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:38px}
+  .tn-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px}
+  .tn-t{font-size:17px;font-weight:700;margin-bottom:8px}
+  .tn-d{font-size:14.5px;color:var(--sub);line-height:1.5}
+  @media(max-width:620px){ .twonum{grid-template-columns:1fr} }
+  .sub-note{font-size:13.5px;color:var(--muted)}
+  .statuscard{background:linear-gradient(160deg,rgba(74,206,169,.08),rgba(74,206,169,.02));border:1px solid rgba(74,206,169,.26);border-radius:18px;padding:30px;max-width:840px;margin-top:6px}
+  .statustag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:12px}
+  .statuscard p{font-size:16px;line-height:1.6;color:var(--sub);margin:0 0 14px}
+  .statuscard p:last-child{margin-bottom:0}
+  .statuscard .muted2{color:var(--muted);font-size:14.5px}
+  .sub-note a{color:var(--teal);text-decoration:none}
+  /* The Mind — decision feed */
+  .mind-feed{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  .mindcard{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--line2);border-radius:14px;padding:20px}
+  .mindcard.a{border-left-color:var(--amber)}
+  .mindcard.g{border-left-color:var(--teal)}
+  .mindcard.b{border-left-color:var(--cyan)}
+  .mindcard .mh{font-size:15px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em;color:var(--ink)}
+  .mindcard .mb{font-size:13.5px;color:var(--sub);line-height:1.55}
+  .mindcard .mm{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:12px;font-weight:600}
+  .mind-close{margin-top:22px;font-size:14.5px}
+  @media(max-width:860px){ .mind-feed{grid-template-columns:1fr 1fr} }
+  @media(max-width:560px){ .mind-feed{grid-template-columns:1fr} }
+  /* It learns your home — cards + prose */
+  .learn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+  .learncard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .learncard .lt{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:12px}
+  .learncard.a .lt{color:var(--amber)}
+  .learncard.b .lt{color:var(--cyan)}
+  .learncard.g .lt{color:var(--teal)}
+  .learncard h3{font-size:16.5px;font-weight:700;margin-bottom:9px;letter-spacing:-.01em;color:var(--ink)}
+  .learncard p{font-size:13.5px;color:var(--sub);line-height:1.55}
+  .learn-prose{margin-top:26px}
+  .learn-prose b{color:var(--ink);font-weight:600}
+  @media(max-width:820px){ .learn-grid{grid-template-columns:1fr} }
+</style>
+
+<a id="top"></a>
+
+<section class="band-line">
+  <div class="wrap">
+    <div class="homehero">
+      <div class="homehero-text">
+        <div class="eyebrow">Sevia at home</div>
+        <h2 class="h2">Catch your solar before it leaves the roof.</h2>
+        <p class="lede">Sevia automatically uses your surplus solar to heat your water, charge the car and run the aircon — so you stop paying peak rates for what the sun could power for free. Software only, working with the devices you already have. No new hardware, no server in the cupboard.</p>
+        <div class="hero-cta" style="margin-top:26px">
+          <a class="btn btn-primary" href="#calculator">Try the solar calculator</a>
+        </div>
+        <p class="sub-note" style="margin-top:20px">Sevia began at home — and the home app runs there today. We’re building the mind out in full: the same engine that runs the commercial product. We’re just not releasing it as a home product in the near term.</p>
+      </div>
+      <div class="homehero-phone">
+        <img src="/img/c-747981fb.jpg" alt="The Sevia home app — solar caught and money saved">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band-alt band-line">
+  <div class="wrap">
+    <div class="statuscard">
+      <div class="statustag">● Where Sevia at home is right now</div>
+      <p>We won’t show you inflated savings we can’t back up. Sevia at home runs in a real home today, measuring exactly how much surplus solar it catches and what that’s worth — device by device. That measured data is what the whole thing is built on.</p>
+      <p class="muted2">The mind behind it is being built out at full pace — it’s the same engine the commercial product runs on. We’re simply not pushing it to market as a home product in the near term. The approach doesn’t change: measured, honest, and only numbers we can stand behind.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band-line">
+  <div class="wrap">
+    <div class="section-head"><div class="eyebrow">How it works</div><h2 class="h2">It watches, decides, and acts.</h2></div>
+    <div class="caps">
+      <div class="capcard"><div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>It watches</h3><p>Sevia reads your solar surplus in real time — how much is spare right now, heading to the grid for pennies.</p></div>
+      <div class="capcard"><div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></div><h3>It decides</h3><p>It works out which device needs that solar most — tank cold? the heat pump wins. Car low? it gets a share. It coordinates so they never fight over the same kilowatt.</p></div>
+      <div class="capcard"><div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div><h3>It acts</h3><p>It sends the command and tells you, in plain English, what it did: “Heating on sunshine.” No kilowatt soup, no jargon.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band-alt band-line">
+  <div class="wrap">
+    <div class="section-head" style="max-width:780px">
+      <div class="eyebrow">The Mind</div>
+      <h2 class="h2">It thinks out loud. In plain English.</h2>
+      <p class="lede">Sevia isn’t a solar diverter following a timer. Every decision weighs your surplus, your tariff, your deadlines and the day’s forecast — and it tells you the single most important thing it’s doing right now, and why. Not a wall of data. A reason.</p>
+    </div>
+    <div class="mind-feed">
+      <div class="mindcard a"><div class="mh">Catching the spare sun</div><div class="mb">2.4 kW spare right now, tank at 52°. Heating your water on free solar instead of buying it back tonight.</div><div class="mm">Hot water · now</div></div>
+      <div class="mindcard a"><div class="mh">Peak rate till 8pm — holding off</div><div class="mb">Your water’s warm enough to wait. It’ll top up on cheap off-peak, or tomorrow’s sun.</div><div class="mm">Hot water · 5:12pm</div></div>
+      <div class="mindcard g"><div class="mh">Car needs 80% by 8am</div><div class="mb">Not enough sun left today — booking the charge for 11pm, when off-peak starts.</div><div class="mm">EV · 9:40pm</div></div>
+      <div class="mindcard b"><div class="mh">Pre-cooling before the peak</div><div class="mb">Strong surplus and a hot afternoon forecast — cooling the house now so it coasts through the 5pm peak.</div><div class="mm">Aircon · 2:05pm</div></div>
+      <div class="mindcard g"><div class="mh">Hot water’s ready</div><div class="mb">Hit your 6pm deadline on solar alone today — no grid power needed.</div><div class="mm">Hot water · 3:20pm</div></div>
+      <div class="mindcard"><div class="mh">Surplus too small to act</div><div class="mb">0.3 kW spare — below the line to run anything usefully. On watch.</div><div class="mm">11:35am</div></div>
+    </div>
+    <p class="lede mind-close">Each line is the real reason behind a real decision — the same logic that made it, not a label bolted on afterwards.</p>
+  </div>
+</section>
+
+<section class="band-line">
+  <div class="wrap">
+    <div class="section-head" style="max-width:780px">
+      <div class="eyebrow">It learns your home</div>
+      <h2 class="h2">It gets smarter the longer it lives with you.</h2>
+      <p class="lede">Sevia keeps a quiet record of every decision and what happened, and uses it to tune itself to your home in particular — the same proven approach a smart thermostat like Nest takes. The longer it runs, the sharper and more efficient it gets.</p>
+    </div>
+    <div class="learn-grid">
+      <div class="learncard a"><div class="lt">Hot water</div><h3>Your tank’s real speed</h3><p>It learns exactly how fast your tank heats and how slowly it cools. So it can leave the heating later and later on solar — hitting your deadline with less and less grid power, and never a cold shower.</p></div>
+      <div class="learncard b"><div class="lt">Your house</div><h3>Your home’s thermal fingerprint</h3><p>It learns how quickly your rooms warm and cool — your home’s own thermal response. Pre-cooling before a hot afternoon gets tuned to how your house actually holds temperature: efficient comfort that coasts through the peak, not a generic guess.</p></div>
+      <div class="learncard g"><div class="lt">Your car</div><h3>Your week, understood</h3><p>It learns your driving pattern — which days the car’s home in the sun, and how much charge you need by when — so it plans surplus charging around your real routine instead of reacting each night.</p></div>
+    </div>
+    <p class="lede learn-prose">It also looks ahead, not just back. Sevia reads a solar forecast for your exact rooftop (via <b>Solcast</b>) and your local weather, so it plans the day instead of only reacting to it — holding a device for sun that’s an hour away, pre-heating before a frosty morning peak, pre-cooling ahead of a hot afternoon, planning tomorrow’s car charge on tomorrow’s expected sun. Anticipate, don’t react.</p>
+    <p class="lede learn-prose" style="margin-top:20px">And it keeps the long view. Week by week it tunes; <b>season by season</b> it learns the slow patterns — the cold winter mornings your heat pump has to work harder through, the summer months when surplus is everywhere; and <b>year on year</b> the picture only sharpens. The data compounds — the estimates it starts with quietly become measured truths your bill confirms.</p>
+    <p class="lede learn-prose" style="margin-top:16px;font-size:14.5px">And a rule that never bends: the learning only ever makes the guarantees <b>more efficient</b> — never looser.</p>
+  </div>
+</section>
+
+<section class="band-alt band-line">
+  <div class="wrap">
+    <div class="section-head" style="max-width:780px">
+      <div class="eyebrow">Honest numbers</div>
+      <h2 class="h2">Two numbers. Both honest.</h2>
+      <p class="lede">Most solar apps blend everything into one inflated figure. Sevia shows two separate, honest numbers — and if it can’t measure something, it shows nothing rather than guessing.</p>
+    </div>
+    <div class="twonum">
+      <div class="tn-card"><div class="tn-t" style="color:var(--amber)">Solar caught</div><div class="tn-d">The kWh that would have been exported for a few cents — used in your home instead.</div></div>
+      <div class="tn-card"><div class="tn-t" style="color:var(--teal)">Money saved</div><div class="tn-d">What you’d have paid at peak rates, versus what it actually cost you on surplus solar.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band-line">
+  <div class="wrap">
+    <div class="section-head" style="max-width:780px">
+      <div class="eyebrow">Who it suits</div>
+      <h2 class="h2">Solar homes that want to use more of their own power.</h2>
+      <p class="lede">Sevia at home suits Australian households with solar panels and at least one flexible load — a heat-pump or electric hot water system, an EV, or a smart aircon. Early users get the app, direct support from the founder, and a say in what gets built next.</p>
+      <p class="sub-note" style="margin-top:16px">Interested? Email <a href="mailto:jason.watson@seviaenergy.com?subject=Sevia%20at%20home">jason.watson@seviaenergy.com</a> — no spam, no selling your details, just Jason following up personally.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band-alt band-line" id="calculator">
+  <div class="wrap">
+    <div class="section-head" style="max-width:780px">
+      <div class="eyebrow">Free tool</div>
+      <h2 class="h2">How much solar are you giving away?</h2>
+      <p class="lede">Answer a few questions and get an honest estimate of how much of your own solar you’re exporting for almost nothing — and what that same energy could be worth used in your home instead. No sign-up, no sales call.</p>
+    </div>
+    <div class="hero-cta" style="margin-top:28px">
+      <a class="btn btn-primary" href="/calculator">Open the solar calculator →</a>
+    </div>
+  </div>
+</section>

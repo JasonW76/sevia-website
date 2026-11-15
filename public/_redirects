@@ -3,5 +3,10 @@
 # So known aliases 301 to the real page; everything else falls through to
 # the built 404.html (served with a proper 404 status). No SPA catch-all.
 
-/the-app         /app         301
+/the-app         /for-homes   301
 /the-calculator  /calculator  301
+
+# Commercial-site cutover (old consumer routes → nearest equivalent)
+/app        /for-homes   301
+/app/*      /for-homes   301
+/about      /company     301

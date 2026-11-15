@@ -1,0 +1,11 @@
+---
+import CommercialLayout from "../layouts/CommercialLayout.astro";
+import body from "../content/commercial/technology-body.html?raw";
+---
+<CommercialLayout
+  title="The technology — Sevia Energy"
+  description="How Sevia works a day ahead: a three-day solar and weather forecast, whole-site metering, safe equipment control, and savings measured on your own meter."
+  active="technology"
+>
+  <Fragment set:html={body} />
+</CommercialLayout>

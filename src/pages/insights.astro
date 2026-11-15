@@ -1,0 +1,11 @@
+---
+import CommercialLayout from "../layouts/CommercialLayout.astro";
+import body from "../content/commercial/insights-body.html?raw";
+---
+<CommercialLayout
+  title="Insights — Sevia Energy"
+  description="Energy, across the portfolio — demand-charge exposure, the return on solar and equipment you've already paid for, and performance you can measure and verify."
+  active="insights"
+>
+  <Fragment set:html={body} />
+</CommercialLayout>

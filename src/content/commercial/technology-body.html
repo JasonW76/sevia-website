@@ -1,0 +1,310 @@
+<style>
+.viz{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 20px 14px;margin:36px 0 0;overflow:hidden}
+  .viz svg{width:100%;height:auto;display:block}
+  .viz figcaption{font-size:12px;color:var(--muted);margin-top:10px;letter-spacing:.02em}
+  .vz-draw{stroke-dasharray:2200;stroke-dashoffset:2200;animation:vzdraw 2.1s ease forwards}
+  .vz-sevia{animation-delay:1s}
+  @keyframes vzdraw{to{stroke-dashoffset:0}}
+  .vz-fade{opacity:0;animation:vzfade .9s ease forwards}
+  .vz-solar{animation-delay:.2s}
+  .vz-unmanaged{animation-delay:.5s}
+  .vz-shaved{animation-delay:2.5s}
+  .vz-anno{animation-delay:2.7s}
+  .vz-act{animation-delay:3s}
+  @keyframes vzfade{to{opacity:1}}
+  @keyframes bnpulse{0%,10%{stroke:#2a313c;fill:#161c26}16%,22%{stroke:#4ACEA9;fill:rgba(74,206,169,.17)}30%,100%{stroke:#2a313c;fill:#161c26}}
+  .bnode{animation:bnpulse 6s ease-in-out infinite}
+  @media(prefers-reduced-motion:reduce){ .vz-draw{animation:none;stroke-dashoffset:0} .vz-fade{animation:none;opacity:1} .bnode{animation:none} }
+  .seechips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .seechip{font-size:13px;color:var(--teal);background:rgba(74,206,169,.10);border:1px solid rgba(74,206,169,.28);border-radius:999px;padding:8px 15px}
+  .flow{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px 22px 16px;margin-top:40px;overflow-x:auto}
+  .flow svg{width:100%;min-width:820px;height:auto;display:block}
+  .flow figcaption{font-size:12px;color:var(--muted);margin-top:12px;letter-spacing:.02em}
+  .console-row{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;margin-top:40px;align-items:center}
+  .console-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+  .console-list li{position:relative;padding-left:22px;font-size:15.5px;color:var(--sub);line-height:1.5}
+  .console-list li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:var(--teal)}
+  @media(max-width:760px){ .console-row{grid-template-columns:1fr} }
+  .shots{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px;align-items:start}
+  .shot{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+  .shot img{width:100%;height:auto;border-radius:10px;display:block;border:1px solid var(--line2)}
+  .shot figcaption{font-size:12px;color:var(--muted);margin-top:12px;letter-spacing:.02em}
+  @media(max-width:760px){ .shots{grid-template-columns:1fr} }
+</style>
+
+<a id="top"></a>
+
+<section class="band-line">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The technology</div>
+      <h2 class="h2">Sevia works a day ahead.</h2>
+      <p class="lede">Most energy systems only react — the peak forms, they scramble. Sevia runs the other way round: it forecasts the day, plans the cheapest path through it, and acts before the peak arrives — then proves every move on your own meter.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band-alt band-line viz-sec">
+  <div class="wrap">
+    <div class="section-head" style="max-width:720px">
+      <div class="eyebrow">One day</div>
+      <h2 class="h2">Watch it hold the peak.</h2>
+      <p class="lede">A modelled summer weekday. Left alone, the lunch rush sets a demand charge you pay all month. With Sevia, the same day — pre-cooled, eased, and held flat right through the billed window.</p>
+    </div>
+    <figure class="viz">
+      <svg viewBox="0 0 1000 420" role="img" aria-label="Modelled day: Sevia flattens the lunch demand peak">
+        <defs>
+          <linearGradient id="vzsol" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#4ACEA9" stop-opacity=".30"/>
+            <stop offset="1" stop-color="#4ACEA9" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect x="328.3" y="40" width="383.4" height="320" fill="rgba(255,255,255,.035)"/>
+        <text x="520" y="58" text-anchor="middle" font-size="11" fill="#6b7280" letter-spacing=".06em">BILLED DEMAND WINDOW · 7AM–5PM</text>
+        <line x1="60" y1="360" x2="980" y2="360" stroke="#2a313c" stroke-width="1"/>
+        <path class="vz-fade vz-solar" d="M290,360 L328.3,346.7 366.7,322.7 405,296 443.3,272 481.7,258.7 520,253.3 558.3,258.7 596.7,272 635,296 673.3,322.7 711.7,346.7 750,360 Z" fill="url(#vzsol)"/>
+        <path class="vz-fade vz-shaved" d="M481.7,173.3 L520,106.7 539.2,82.7 558.3,93.3 596.7,173.3 L596.7,184 558.3,136 539.2,136 520,136 481.7,152 Z" fill="rgba(239,159,39,.16)"/>
+        <polyline class="vz-fade vz-unmanaged" fill="none" stroke="#7b828d" stroke-width="2.4" stroke-dasharray="7 5" stroke-linejoin="round" stroke-linecap="round" points="60,333.3 175,336 290,328 328.3,293.3 366.7,240 405,221.3 443.3,232 481.7,173.3 520,106.7 539.2,82.7 558.3,93.3 596.7,173.3 635,213.3 673.3,226.7 711.7,240 750,200 788.3,146.7 826.7,173.3 865,240 903.3,293.3 980,328"/>
+        <polyline class="vz-draw vz-sevia" fill="none" stroke="#EF9F27" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="60,333.3 175,336 290,328 328.3,285.3 366.7,226.7 405,213.3 443.3,221.3 481.7,152 520,136 539.2,136 558.3,136 596.7,184 635,221.3 673.3,232 711.7,242.7 750,205.3 788.3,168 826.7,184 865,242.7 903.3,296 980,328"/>
+        <defs><filter id="vzglow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4"/></filter></defs>
+        <path id="vzsevpath" d="M60,333.3 L175,336 290,328 328.3,285.3 366.7,226.7 405,213.3 443.3,221.3 481.7,152 520,136 539.2,136 558.3,136 596.7,184 635,221.3 673.3,232 711.7,242.7 750,205.3 788.3,168 826.7,184 865,242.7 903.3,296 980,328" fill="none" stroke="none"/>
+        <circle r="13" fill="#EF9F27" opacity=".20" filter="url(#vzglow)"><animateMotion dur="15s" begin="3s" repeatCount="indefinite"><mpath href="#vzsevpath"/></animateMotion></circle>
+        <circle r="5" fill="#EF9F27" stroke="#11161E" stroke-width="1.5"><animateMotion dur="15s" begin="3s" repeatCount="indefinite"><mpath href="#vzsevpath"/></animateMotion></circle>
+        <g class="vz-fade vz-anno">
+          <line x1="470" y1="136" x2="612" y2="136" stroke="#EF9F27" stroke-width="1.4" stroke-dasharray="2 4" opacity=".75"/>
+          <circle cx="539.2" cy="82.7" r="4" fill="#7b828d"/>
+          <text x="539.2" y="72" text-anchor="middle" font-size="12" fill="#9aa1ab">Unmanaged peak</text>
+          <circle cx="539.2" cy="136" r="4.5" fill="#EF9F27"/>
+          <text x="624" y="132" font-size="12.5" fill="#EF9F27" font-weight="600">Peak held</text>
+        </g>
+        <g class="vz-fade vz-act" font-size="11.5" fill="#9aa1ab" text-anchor="middle">
+          <circle cx="405" cy="213.3" r="3.5" fill="#4ACEA9"/>
+          <text x="405" y="201">Pre-cool</text>
+          <circle cx="635" cy="221.3" r="3.5" fill="#4ACEA9"/>
+          <text x="648" y="210" text-anchor="start">Recover</text>
+        </g>
+        <g font-size="11" fill="#6b7280" text-anchor="middle">
+          <text x="60" y="381">12am</text>
+          <text x="290" y="381">6am</text>
+          <text x="520" y="381">12pm</text>
+          <text x="750" y="381">6pm</text>
+          <text x="980" y="381">12am</text>
+        </g>
+        <g font-size="12" fill="#c3c9d2">
+          <line x1="60" y1="405" x2="86" y2="405" stroke="#7b828d" stroke-width="2.4" stroke-dasharray="7 5"/>
+          <text x="92" y="409">Unmanaged</text>
+          <line x1="212" y1="405" x2="238" y2="405" stroke="#EF9F27" stroke-width="3"/>
+          <text x="244" y="409">With Sevia</text>
+          <rect x="360" y="399" width="16" height="12" rx="2" fill="#4ACEA9" opacity=".5"/>
+          <text x="382" y="409">Solar</text>
+        </g>
+      </svg>
+      <figcaption>A day with Sevia · modelled, illustrative</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band-line">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The platform</div>
+      <h2 class="h2">The parts that make it work.</h2>
+    </div>
+    <div class="caps">
+      <div class="capcard">
+        <div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 3 7-8"/><path d="M16 4h5v5"/></svg></div>
+        <h3>Forecasting</h3>
+        <p>Sevia reads a three-day solar forecast and a live weather picture, and sees the peak forming hours before it lands — then plans the cheapest way through.</p>
+        <ul>
+          <li>A three-day solar forecast, where you have panels</li>
+          <li>Cloud, sunlight and heat as they move</li>
+          <li>Your loads, and the peak before it lands</li>
+        </ul>
+      </div>
+      <div class="capcard">
+        <div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19a8 8 0 0 1 16 0"/><path d="M12 19l4-5"/><circle cx="12" cy="19" r="1.3" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Whole-site metering</h3>
+        <p>A power meter watches your site second by second — the eyes the brain acts on, and the proof behind every saving.</p>
+        <ul>
+          <li>Live whole-site demand</li>
+          <li>Per-circuit submetering, optional</li>
+          <li>A live shadow of your network demand meter</li>
+        </ul>
+      </div>
+      <div class="capcard">
+        <div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h8M17 8h2M5 16h2M11 16h8"/><circle cx="15" cy="8" r="2.3"/><circle cx="9" cy="16" r="2.3"/></svg></div>
+        <h3>Equipment control</h3>
+        <p>Sevia nudges the gear you already run — easing a degree here, staging a compressor there — always inside safe limits, never forcing it.</p>
+        <ul>
+          <li>Networked control of your rooftop a/c</li>
+          <li>Pre-cool, stage and cap the peak</li>
+          <li>Kitchen ventilation where it pays</li>
+        </ul>
+      </div>
+      <div class="capcard">
+        <div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/></svg></div>
+        <h3>Learning</h3>
+        <p>It learns how your building actually behaves — how fast your cold room recovers, when your rush lands — and gets sharper every week.</p>
+        <ul>
+          <li>Shadows your site before it acts</li>
+          <li>Learns your site's own rhythms and recovery</li>
+          <li>Checks every decision against the meter</li>
+        </ul>
+      </div>
+      <div class="capcard">
+        <div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
+        <h3>Measurement</h3>
+        <p>Savings are verified on your own bill, to the international IPMVP standard — measured, not modelled.</p>
+        <ul>
+          <li>Baseline from your shadow period</li>
+          <li>Adjusted for weather and trade</li>
+          <li>Verified on your meter</li>
+        </ul>
+      </div>
+      <div class="capcard">
+        <div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Safety</h3>
+        <p>The worst Sevia can do is use a little more energy — never create a hazard.</p>
+        <ul>
+          <li>Fails safe: ventilation full, cooling on</li>
+          <li>The meter only measures; it can't act</li>
+          <li>Never touches cooking or food safety</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band-alt band-line">
+  <div class="wrap">
+    <div class="section-head" style="max-width:780px">
+      <div class="eyebrow">Foresight</div>
+      <h2 class="h2">It can see the day before it happens.</h2>
+      <p class="lede">Sevia reads a three-day solar forecast and a live picture of the weather — cloud, sunlight, heat — and lines it up against how your site behaves. It knows the hot afternoon is coming hours before you feel it, and it has already made room. When a cloud passes, it knows the sun is right behind it — so it holds steady instead of flinching at every flicker.</p>
+    </div>
+    <div class="seechips">
+      <span class="seechip">Three-day solar forecast</span>
+      <span class="seechip">Cloud &amp; sunlight</span>
+      <span class="seechip">Heat &amp; humidity</span>
+      <span class="seechip">Your demand pattern</span>
+      <span class="seechip">The peak, before it forms</span>
+    </div>
+  </div>
+</section>
+
+<section class="band-line">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The console</div>
+      <h2 class="h2">Your whole site, on one screen.</h2>
+      <p class="lede">You and your team see the day as it runs — where you sit against your plan limit, what's on your own solar, and the peak held. Modelled, for illustration.</p>
+    </div>
+    <div class="console-row">
+      <figure class="shot"><img alt="Modelled live demand against the plan limit" src="/img/c-0564c41a.jpg"><figcaption>Live demand against the plan limit · modelled, illustrative</figcaption></figure>
+      <ul class="console-list">
+        <li>Where you sit against your plan limit, right now</li>
+        <li>What’s running on your own solar</li>
+        <li>The day’s peak — and the saving so far</li>
+        <li>An alert the moment anything drifts</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band-alt band-line">
+  <div class="wrap">
+    <div class="section-head" style="max-width:780px">
+      <div class="eyebrow">How it fits together</div>
+      <h2 class="h2">From your switchboard to the brain, and back.</h2>
+      <p class="lede">Sevia reaches the gear you already run over the languages it already speaks — Modbus and BACnet — through one on-site gateway on its own mobile link. Measurements flow up to the brain in the cloud; safe setpoints flow back down. Nothing on your site is exposed to the internet.</p>
+    </div>
+    <figure class="flow">
+      <svg viewBox="0 0 1120 590" role="img" aria-label="How Sevia connects: site equipment over Modbus and BACnet to an on-site gateway, then an encrypted link to the Sevia cloud and brain">
+<defs>
+<marker id="ahT" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L9,5 L0,10 z" fill="#4ACEA9"/></marker>
+<marker id="ahA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L9,5 L0,10 z" fill="#EF9F27"/></marker>
+</defs>
+<text x="60" y="44" font-size="12" letter-spacing=".14em" font-weight="700" fill="#EF9F27">YOUR SITE</text>
+<rect x="48" y="60" width="300" height="474" rx="16" fill="#161c26" stroke="#2a313c" stroke-width="1"/>
+<rect x="64" y="84" width="268" height="54" rx="11" fill="rgba(74,206,169,.06)" stroke="#4ACEA9" stroke-width="1.6"/>
+<circle cx="82" cy="111.0" r="4.5" fill="#4ACEA9"/>
+<text x="98" y="105" font-size="14" font-weight="600" fill="#f2f4f7">Power meter</text>
+<text x="98" y="122" font-size="11.5" fill="#7b828d">CT clamps · whole-site demand</text>
+<rect x="64" y="150" width="268" height="54" rx="11" fill="#11161E" stroke="#2a313c" stroke-width="1"/>
+<circle cx="82" cy="177.0" r="4.5" fill="#4ACEA9"/>
+<text x="98" y="171" font-size="14" font-weight="600" fill="#f2f4f7">Temperature sensors</text>
+<text x="98" y="188" font-size="11.5" fill="#7b828d">cold rooms &amp; comfort zones</text>
+<rect x="64" y="216" width="268" height="54" rx="11" fill="#11161E" stroke="#2a313c" stroke-width="1"/>
+<circle cx="82" cy="243.0" r="4.5" fill="#4ACEA9"/>
+<text x="98" y="237" font-size="14" font-weight="600" fill="#f2f4f7">Rooftop air-con</text>
+<text x="98" y="254" font-size="11.5" fill="#7b828d">pre-cool · stage compressors</text>
+<rect x="64" y="282" width="268" height="54" rx="11" fill="#11161E" stroke="#2a313c" stroke-width="1"/>
+<circle cx="82" cy="309.0" r="4.5" fill="#4ACEA9"/>
+<text x="98" y="303" font-size="14" font-weight="600" fill="#f2f4f7">Kitchen ventilation</text>
+<text x="98" y="320" font-size="11.5" fill="#7b828d">fan speed to match cooking</text>
+<rect x="64" y="348" width="268" height="54" rx="11" fill="#11161E" stroke="#2a313c" stroke-width="1"/>
+<circle cx="82" cy="375.0" r="4.5" fill="#4ACEA9"/>
+<text x="98" y="369" font-size="14" font-weight="600" fill="#f2f4f7">Hot water</text>
+<text x="98" y="386" font-size="11.5" fill="#7b828d">heat in the solar window</text>
+<rect x="64" y="414" width="268" height="54" rx="11" fill="#11161E" stroke="#2a313c" stroke-width="1"/>
+<circle cx="82" cy="441.0" r="4.5" fill="#7b828d"/>
+<text x="98" y="435" font-size="14" font-weight="600" fill="#f2f4f7">Refrigeration</text>
+<text x="98" y="452" font-size="11.5" fill="#7b828d">monitored · food-safe limits</text>
+<text x="64" y="522" font-size="11.5" fill="#7b828d">Off-the-shelf · fitted by a licensed electrician</text>
+<text x="466" y="44" font-size="12" letter-spacing=".14em" font-weight="700" fill="#EF9F27">ON-SITE GATEWAY</text>
+<rect x="452" y="232" width="196" height="170" rx="16" fill="#161c26" stroke="#2a313c" stroke-width="1"/>
+<rect x="524" y="252" width="52" height="36" rx="7" fill="none" stroke="#4ACEA9" stroke-width="2"/>
+<circle cx="550" cy="270" r="4" fill="#4ACEA9"/>
+<line x1="536" y1="270" x2="546" y2="270" stroke="#4ACEA9" stroke-width="2"/><line x1="554" y1="270" x2="564" y2="270" stroke="#4ACEA9" stroke-width="2"/>
+<text x="550" y="312" text-anchor="middle" font-size="15" font-weight="700" fill="#f2f4f7">On-site gateway</text>
+<text x="550" y="334" text-anchor="middle" font-size="12" fill="#aeb6c2">Its own mobile link</text>
+<text x="550" y="354" text-anchor="middle" font-size="12" fill="#4ACEA9" font-weight="600">Fails safe</text>
+<text x="550" y="374" text-anchor="middle" font-size="11" fill="#7b828d">off the internet · one secure door out</text>
+<text x="758" y="44" font-size="12" letter-spacing=".14em" font-weight="700" fill="#EF9F27">SEVIA CLOUD + BRAIN</text>
+<rect x="744" y="60" width="336" height="474" rx="16" fill="#161c26" stroke="#2a313c" stroke-width="1"/>
+<rect x="760" y="84" width="150" height="46" rx="11" fill="#11161E" stroke="#2a313c" stroke-width="1"/>
+<circle cx="778" cy="107.0" r="4.5" fill="#4ACEA9"/>
+<text x="794" y="105" font-size="14" font-weight="600" fill="#f2f4f7">Solar forecast</text>
+<text x="794" y="122" font-size="11.5" fill="#7b828d">3 days ahead</text>
+<rect x="922" y="84" width="142" height="46" rx="11" fill="#11161E" stroke="#2a313c" stroke-width="1"/>
+<circle cx="940" cy="107.0" r="4.5" fill="#4ACEA9"/>
+<text x="956" y="105" font-size="14" font-weight="600" fill="#f2f4f7">Weather</text>
+<text x="956" y="122" font-size="11.5" fill="#7b828d">cloud · sun · heat</text>
+<line x1="835" y1="130" x2="835" y2="162" stroke="#4ACEA9" stroke-width="1.6" marker-end="url(#ahT)"/>
+<line x1="993" y1="130" x2="993" y2="162" stroke="#4ACEA9" stroke-width="1.6" marker-end="url(#ahT)"/>
+<rect x="760" y="166" width="304" height="256" rx="14" fill="rgba(74,206,169,.05)" stroke="rgba(74,206,169,.34)" stroke-width="1.4"/>
+<text x="776" y="190" font-size="12" letter-spacing=".12em" font-weight="700" fill="#4ACEA9">THE SEVIA BRAIN</text>
+<rect class="bnode" style="animation-delay:0s" x="786" y="206" width="116" height="40" rx="10" fill="#161c26" stroke="#2a313c" stroke-width="1"/>
+<text x="844.0" y="231.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f2f4f7">Forecast</text>
+<rect class="bnode" style="animation-delay:1.5s" x="922" y="206" width="116" height="40" rx="10" fill="#161c26" stroke="#2a313c" stroke-width="1"/>
+<text x="980.0" y="231.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f2f4f7">Plan</text>
+<rect class="bnode" style="animation-delay:3s" x="922" y="300" width="116" height="40" rx="10" fill="#161c26" stroke="#2a313c" stroke-width="1"/>
+<text x="980.0" y="325.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f2f4f7">Act</text>
+<rect class="bnode" style="animation-delay:4.5s" x="786" y="300" width="116" height="40" rx="10" fill="#161c26" stroke="#2a313c" stroke-width="1"/>
+<text x="844.0" y="325.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#f2f4f7">Learn</text>
+<line x1="902" y1="226.0" x2="920" y2="226.0" stroke="#4ACEA9" stroke-width="1.8" marker-end="url(#ahT)"/>
+<line x1="980.0" y1="246" x2="980.0" y2="298" stroke="#4ACEA9" stroke-width="1.8" marker-end="url(#ahT)"/>
+<line x1="920" y1="320.0" x2="902" y2="320.0" stroke="#4ACEA9" stroke-width="1.8" marker-end="url(#ahT)"/>
+<line x1="844.0" y1="298" x2="844.0" y2="246" stroke="#4ACEA9" stroke-width="1.8" marker-end="url(#ahT)"/>
+<text x="912" y="270" text-anchor="middle" font-size="11.5" fill="#aeb6c2">Memory</text>
+<text x="912" y="286" text-anchor="middle" font-size="10.5" fill="#7b828d">learns your site</text>
+<text x="776" y="408" font-size="12" fill="#aeb6c2">Acts on your equipment, inside safe limits.</text>
+<text x="760" y="470" font-size="12.5" fill="#f2f4f7" font-weight="600">Your saving — measured on your own meter.</text>
+<text x="760" y="490" font-size="11.5" fill="#7b828d">Verified to the IPMVP standard.</text>
+<line x1="350" y1="306" x2="450" y2="306" stroke="#4ACEA9" stroke-width="2" marker-end="url(#ahT)"/>
+<line x1="450" y1="330" x2="350" y2="330" stroke="#EF9F27" stroke-width="2" marker-end="url(#ahA)"/>
+<rect x="339.5" y="266" width="121.0" height="22" rx="11" fill="#11161E" stroke="#2a313c" stroke-width="1"/>
+<text x="400" y="281" text-anchor="middle" font-size="11.5" fill="#aeb6c2">Modbus · BACnet</text>
+<line x1="650" y1="306" x2="742" y2="306" stroke="#4ACEA9" stroke-width="2" marker-end="url(#ahT)"/>
+<line x1="742" y1="330" x2="650" y2="330" stroke="#EF9F27" stroke-width="2" marker-end="url(#ahA)"/>
+<rect x="638.8" y="266" width="114.39999999999999" height="22" rx="11" fill="#11161E" stroke="#2a313c" stroke-width="1"/>
+<text x="696" y="281" text-anchor="middle" font-size="11.5" fill="#aeb6c2">Encrypted link</text>
+<circle cx="60" cy="562" r="5" fill="#4ACEA9"/><text x="72" y="566" font-size="12.5" fill="#aeb6c2">Sevia controls</text>
+<circle cx="200" cy="562" r="5" fill="#7b828d"/><text x="212" y="566" font-size="12.5" fill="#aeb6c2">Monitored only</text>
+<line x1="340" y1="562" x2="366" y2="562" stroke="#4ACEA9" stroke-width="2" marker-end="url(#ahT)"/><text x="374" y="566" font-size="12.5" fill="#aeb6c2">Measurements up</text>
+<line x1="520" y1="562" x2="546" y2="562" stroke="#EF9F27" stroke-width="2" marker-end="url(#ahA)"/><text x="554" y="566" font-size="12.5" fill="#aeb6c2">Safe setpoints down</text>
+</svg>
+      <figcaption>How Sevia connects · modelled, illustrative</figcaption>
+    </figure>
+  </div>
+</section>

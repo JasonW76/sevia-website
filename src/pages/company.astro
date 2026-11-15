@@ -1,0 +1,11 @@
+---
+import CommercialLayout from "../layouts/CommercialLayout.astro";
+import body from "../content/commercial/company-body.html?raw";
+---
+<CommercialLayout
+  title="Company — Sevia Energy"
+  description="Why Sevia exists, who builds it, and what we stand on — a hands-on founder with a delivery record, building a learning energy brain for commercial sites."
+  active="company"
+>
+  <Fragment set:html={body} />
+</CommercialLayout>

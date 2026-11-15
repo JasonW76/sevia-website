@@ -1,7 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import body from "../content/home-body.html?raw";
+import CommercialLayout from "../layouts/CommercialLayout.astro";
+import body from "../content/commercial/home-body.html?raw";
 ---
-<Layout title="Sevia — catch your solar before it leaves the roof" description="Sevia helps Australian solar homes use their own surplus power to heat water, charge the car and run the AC — instead of exporting it for cents." active="home">
+<CommercialLayout
+  title="Sevia Energy — the learning energy brain for commercial sites"
+  description="Sevia forecasts your site a day ahead, holds the network demand charge, and proves every saving on your own meter. A learning energy brain for mid-market hospitality."
+  active="home"
+>
   <Fragment set:html={body} />
-</Layout>
+</CommercialLayout>

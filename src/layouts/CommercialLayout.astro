@@ -1,0 +1,72 @@
+---
+import "../styles/commercial.css";
+const { title, description, active } = Astro.props;
+const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ""), Astro.site).href;
+const ogImage = new URL("/og-image.png", Astro.site).href;
+const links = [
+  { href: "/technology", label: "The technology", key: "technology" },
+  { href: "/company", label: "Company", key: "company" },
+  { href: "/insights", label: "Insights", key: "insights" },
+  { href: "/for-homes", label: "For homes", key: "for-homes" },
+];
+---
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="theme-color" content="#0D1016" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Sevia Energy" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content="en_AU" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href={active === "home" ? "#top" : "/"} style="text-decoration:none">
+      <img src="/img/c-2b9f12de.png" alt="Sevia" />
+      <span>Sevia <span class="en">Energy</span><span class="tm">™</span></span>
+    </a>
+    <nav class="nav-links">
+      {links.map((l) => (
+        <a href={active === l.key ? "#top" : l.href} style={active === l.key ? "color:var(--ink)" : undefined}>{l.label}</a>
+      ))}
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href={active === "home" ? "#contact" : "/#contact"}>Become a partner</a>
+    </div>
+  </div>
+</header>
+<slot />
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div class="foot-brand"><img src="/img/c-2b9f12de.png" alt="" />Sevia Energy™ · Canberra, Australia</div>
+        <p class="micro">Capital Environmental Consulting Pty Ltd, trading as Sevia Energy. Sevia™ — trade mark 2706330. Figures shown are modelled illustrations; every real site is measured from its own audit, tariff and bill.</p>
+      </div>
+      <div style="color:var(--muted)">© 2026 Sevia Energy</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

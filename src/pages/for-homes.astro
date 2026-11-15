@@ -1,0 +1,11 @@
+---
+import CommercialLayout from "../layouts/CommercialLayout.astro";
+import body from "../content/commercial/for-homes-body.html?raw";
+---
+<CommercialLayout
+  title="Sevia at home — catch your solar before it leaves the roof"
+  description="Sevia at home automatically uses your surplus solar to heat water, charge the car and run the aircon, so you stop paying peak rates for what the sun could power for free."
+  active="for-homes"
+>
+  <Fragment set:html={body} />
+</CommercialLayout>
